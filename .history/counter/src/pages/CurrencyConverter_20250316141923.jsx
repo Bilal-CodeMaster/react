@@ -26,7 +26,7 @@ setConvertedAmount(amount*currencyInfo[to])
         >
             <h1 className='w-full text-center bg-blue-400  rounded-full my-2'>Currency convertor</h1>
             <div className="w-full">
-                <div className="w-full max-w-md mx-auto  rounded-lg p-5 bg-blue-400 outline-none ">
+                <div className="w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 bg-blue-400 ">
                     <form
                         onSubmit={(e) => {
                             e.preventDefault();

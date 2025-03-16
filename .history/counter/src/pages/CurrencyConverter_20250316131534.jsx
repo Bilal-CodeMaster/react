@@ -1,16 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import InputBox from '../components/InputCurrency';
 import CurrencyInfo from '../hooks/CurrencyInfo';
 
 function CurrencyConverter() {
-    const [amount,setAmount]=useState(0)
 const [from,setFrom]=useState("USD")
 const [to,setTo]=useState("PKR")
-const [convertedAmount,setConvertedAmount]=useState(0)
+const [amount,setAmount]=useState(0)
 const currencyInfo=CurrencyInfo(from)
+const [convertedAmount,setConvertedAmount]=useState(0)
 
-  const options=Object.keys(currencyInfo)
-  
+const [options, setOption] = useState([]);
+
+const optionArray = () => {
+  setOption(Object.keys(currencyInfo));
+};
   const swap=()=>{
       setFrom(to)
       setTo(from)
@@ -20,13 +23,15 @@ const currencyInfo=CurrencyInfo(from)
   const convert=()=>{
 setConvertedAmount(amount*currencyInfo[to])
   }
-
+useEffect(()=>{
+   optionArray()
+convert()
+})
   return (
         <div
         >
-            <h1 className='w-full text-center bg-blue-400  rounded-full my-2'>Currency convertor</h1>
             <div className="w-full">
-                <div className="w-full max-w-md mx-auto  rounded-lg p-5 bg-blue-400 outline-none ">
+                <div className="w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 bg-blue-400">
                     <form
                         onSubmit={(e) => {
                             e.preventDefault();
@@ -37,11 +42,10 @@ setConvertedAmount(amount*currencyInfo[to])
                             <InputBox
                                 label="From"
                                 amount={amount}
+                                currency={from}
                                 currencyOption={options}
-                                onChangeAmount={(amount)=>setAmount(amount)}
-                                onChangeCurrency={(currency) => setFrom(currency)}
-                                selectCurrency={from}
-                               
+                                setAmount={(amount)=>setAmount(amount)}
+                                setCurrency={(currency)=>setFrom(currency)}
 
                             />
                         </div>
@@ -58,10 +62,10 @@ setConvertedAmount(amount*currencyInfo[to])
                             <InputBox
                                 label="To"   
                                 amount={convertedAmount}
-                                onChangeCurrency={(currency) => setTo(currency)}
+                                currency={to}
                                 currencyOption={options}
-                              onChangeAmount={(amount)=>setConvertedAmount(amount)}
-                                selectCurrency={to}
+                                setAmount={(amount)=>setConvertedAmount(amount)}
+                                setCurrency={(currency)=>setTo(currency)}
                                 isInputDisable
                             />
                         </div>

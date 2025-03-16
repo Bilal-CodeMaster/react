@@ -24,9 +24,8 @@ setConvertedAmount(amount*currencyInfo[to])
   return (
         <div
         >
-            <h1 className='w-full text-center bg-blue-400  rounded-full my-2'>Currency convertor</h1>
             <div className="w-full">
-                <div className="w-full max-w-md mx-auto  rounded-lg p-5 bg-blue-400 outline-none ">
+                <div className="w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 bg-blue-400">
                     <form
                         onSubmit={(e) => {
                             e.preventDefault();
@@ -38,9 +37,8 @@ setConvertedAmount(amount*currencyInfo[to])
                                 label="From"
                                 amount={amount}
                                 currencyOption={options}
-                                onChangeAmount={(amount)=>setAmount(amount)}
-                                onChangeCurrency={(currency) => setFrom(currency)}
-                                selectCurrency={from}
+                                setCurrency={() => setAmount(amount)}
+                                setAmount={(amount)=>setAmount(amount)}
                                
 
                             />
@@ -58,10 +56,10 @@ setConvertedAmount(amount*currencyInfo[to])
                             <InputBox
                                 label="To"   
                                 amount={convertedAmount}
-                                onChangeCurrency={(currency) => setTo(currency)}
+                                setCurrency={(currency) => setTo(currency)}
                                 currencyOption={options}
-                              onChangeAmount={(amount)=>setConvertedAmount(amount)}
-                                selectCurrency={to}
+                                setAmount={(amount)=>setConvertedAmount(amount)}
+                                
                                 isInputDisable
                             />
                         </div>

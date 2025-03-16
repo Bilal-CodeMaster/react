@@ -32,11 +32,11 @@ const inputId=useId()
                <select
                     className="rounded-lg px-1 py-1 bg-gray-100 cursor-pointer outline-none"
                     value={selectCurrency}
-                    onChange={(e) => onChangeCurrency && onChangeCurrency(e.target.value)}
-                
+                    onChange={(e) => onCurrencyChange && onCurrencyChange(e.target.value)}
+                    disabled={currencyDisable}
                 >
                     
-                        {currencyOption.map((currency) => (
+                        {cu.map((currency) => (
                             <option key={currency} value={currency}>
                             {currency}
                             </option>

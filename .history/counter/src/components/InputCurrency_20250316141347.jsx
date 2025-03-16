@@ -36,7 +36,7 @@ const inputId=useId()
                 
                 >
                     
-                        {currencyOption.map((currency) => (
+                        {currencyOption.map((currency,index) => (
                             <option key={currency} value={currency}>
                             {currency}
                             </option>

@@ -1,12 +1,12 @@
-import React, { useId } from 'react'
+import React, { use, useId } from 'react'
 function InputBox({
     label,
     amount,
-    onChangeAmount,
-    onChangeCurrency,
+    setAmount,
+    setCurrency,
     currencyOption=[],
     isInputDisable=false,
-   selectCurrency,
+   
     className = "",
 }) {
    
@@ -18,33 +18,32 @@ const inputId=useId()
                     {label}
                 </label>
                 <input
-                id={inputId}
-                className="outline-none w-full bg-transparent py-1.5"
-                type="number"
-                placeholder="Amount"
-                value={amount}
-                disabled={isInputDisable}
-                onChange={(e)=>onChangeAmount && onChangeAmount(Number(e.target.value))}
+                id=
+                    onChange={(e)=>setAmount && setAmount(e.target.value)}
+                    className="outline-none w-full bg-transparent py-1.5"
+                    type="number"
+                    placeholder="Amount"
+                    value={amount}
+                    disabled={isInputDisable}
                 />
             </div>
             <div className="w-1/2 flex flex-wrap justify-end text-right">
                 <p className="text-black/40 mb-2 w-full">Currency Type</p>
-               <select
+                <select
                     className="rounded-lg px-1 py-1 bg-gray-100 cursor-pointer outline-none"
-                    value={selectCurrency}
-                    onChange={(e) => onChangeCurrency && onChangeCurrency(e.target.value)}
-                
+                    value={currency}
+                    onChange={(currency)=>setCurrency && setCurrency(currency)}
                 >
-                    
-                        {currencyOption.map((currency) => (
-                            <option key={currency} value={currency}>
+                    {
+                    currencyOption.map((currency,index)=>{
+
+                        <option key={index} value={currency}>
                             {currency}
-                            </option>
-                        ))}
+                        </option>
+                    })
+                    }
                 
                 </select>
-                
-              
             </div>
         </div>
     );

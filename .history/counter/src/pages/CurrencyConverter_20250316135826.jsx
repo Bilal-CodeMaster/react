@@ -3,9 +3,9 @@ import InputBox from '../components/InputCurrency';
 import CurrencyInfo from '../hooks/CurrencyInfo';
 
 function CurrencyConverter() {
-    const [amount,setAmount]=useState(0)
 const [from,setFrom]=useState("USD")
 const [to,setTo]=useState("PKR")
+const [amount,setAmount]=useState(0)
 const [convertedAmount,setConvertedAmount]=useState(0)
 const currencyInfo=CurrencyInfo(from)
 
@@ -24,9 +24,8 @@ setConvertedAmount(amount*currencyInfo[to])
   return (
         <div
         >
-            <h1 className='w-full text-center bg-blue-400  rounded-full my-2'>Currency convertor</h1>
             <div className="w-full">
-                <div className="w-full max-w-md mx-auto  rounded-lg p-5 bg-blue-400 outline-none ">
+                <div className="w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 bg-blue-400">
                     <form
                         onSubmit={(e) => {
                             e.preventDefault();
@@ -35,13 +34,7 @@ setConvertedAmount(amount*currencyInfo[to])
                     >
                         <div className="w-full mb-1">
                             <InputBox
-                                label="From"
-                                amount={amount}
-                                currencyOption={options}
-                                onChangeAmount={(amount)=>setAmount(amount)}
-                                onChangeCurrency={(currency) => setFrom(currency)}
-                                selectCurrency={from}
-                               
+                              
 
                             />
                         </div>
@@ -56,13 +49,7 @@ setConvertedAmount(amount*currencyInfo[to])
                         </div>
                         <div className="w-full mt-1 mb-4">
                             <InputBox
-                                label="To"   
-                                amount={convertedAmount}
-                                onChangeCurrency={(currency) => setTo(currency)}
-                                currencyOption={options}
-                              onChangeAmount={(amount)=>setConvertedAmount(amount)}
-                                selectCurrency={to}
-                                isInputDisable
+                              
                             />
                         </div>
                         <button type="submit" className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg">
