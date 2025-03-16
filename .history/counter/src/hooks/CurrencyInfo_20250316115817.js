@@ -1,0 +1,5 @@
+
+
+function CurrencyInfo(currec){
+
+}
