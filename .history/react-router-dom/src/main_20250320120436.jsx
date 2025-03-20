@@ -42,14 +42,8 @@ import Github, { GithubData } from './components/Github/Github.jsx'
 // ])
 const router=createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<Layout/>}>
-      <Route path='' element={<Home/>}/>
-      <Route path='/about' element={<About/>}/>
-      <Route path='/contact' element={<Contact/>}/>
-      <Route path='/:id' element={<Params/>}/>
-      <Route 
-      loader={GithubData}
-      path='/github' element={<Github/>}/>
+    <Route>
+
     </Route>
   )
 )
